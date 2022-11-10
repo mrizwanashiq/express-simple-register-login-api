@@ -11,6 +11,7 @@ app.post("/register", (req, res) => {
     if (existingUser) {
         res.status(400).json({ message: "User already exists", data: req.body })
     } else {
+        req.body.id = users[users.length - 1].id + 1;
         users.push(req.body)
         res.status(200).json({ message: "You have registered successfully", data: req.body })
     }
